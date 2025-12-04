@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Relatório Geral</title>
+</head>
+<body>
+    <h2>Relatório Geral de Matrículas</h2>
+
+    <table border="1" cellpadding="6">
+        <tr>
+            <th>ID Matrícula</th>
+            <th>Aluno</th>
+            <th>CPF</th>
+            <th>Curso</th>
+            <th>Valor</th>
+            <th>Status</th>
+            <th>Data</th>
+        </tr>
+
+        {% for item in dados %}
+        <tr>
+            <td>{{ item.id }}</td>
+            <td>{{ item.aluno }}</td>
+            <td>{{ item.cpf }}</td>
+            <td>{{ item.curso }}</td>
+            <td>R$ {{ item.valor_inscricao }}</td>
+            <td>{{ item.status_pagamento }}</td>
+            <td>{{ item.data_matricula }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <br>
+    <a href="?format=json">Ver em JSON</a>
+</body>
+</html>

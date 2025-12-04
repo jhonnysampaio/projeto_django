@@ -1,10 +1,11 @@
 from rest_framework import generics
+from django.shortcuts import render
 from gerenciamento_escola.models import Aluno, Curso, Matricula
 from .serializers import AlunoSerializer, CursoSerializer, MatriculaSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 import json
 
 class AlunoListarCriar(generics.ListCreateAPIView):
@@ -88,3 +89,39 @@ class RelatorioDownload(APIView):
     response["Content-Disposition"] = "attachment; filename=relatorio.json"
 
     return response
+  
+def RelatorioRaw(request):
+  sql = """
+SELECT
+  m.id,
+  a.nome AS aluno_nome,
+  a.cpf,
+  c.nome AS curso_nome,
+  c.valor_inscricao,
+  m.status_pagamento,
+  m.data_matricula
+
+FROM gerenciamento_escola_matricula m
+INNER JOIN gerenciamento_escola_aluno a ON a.id = m.aluno_id
+INNER JOIN gerenciamento_escola_curso c ON c.id = m.curso_id
+ORDER BY m.data_matricula DESC  
+"""
+  relatorio = Matricula.objects.raw(sql)
+
+  dados = [
+    {
+      "id" : item.id,
+      "aluno" : item.aluno_nome,
+      "cpf" : item.cpf,
+      "curso" : item.curso_nome,
+      "valor_inscricao" : float(item.valor_inscricao),
+      "status_pagamento" : item.status_pagamento,
+      "data_matricula" : str(item.data_matricula)
+    }
+    for item in relatorio
+  ]
+
+  if request.GET.get("format") == "json":
+    return JsonResponse(dados, safe=False)
+  
+  return render(request, "api/relatorio_draw.html", {"dados" : dados})
