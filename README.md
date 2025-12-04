@@ -9,7 +9,7 @@ Tecnologias Utilizadas:
 
 Arquivo de dependências em requirements.txt
 
-Instalação e Execução:
+# Instalação e Execução:
 1. Clonar o repositório:
 git clone <https://github.com/jhonnysampaio/projeto_django.git>
 cd projeto_django
