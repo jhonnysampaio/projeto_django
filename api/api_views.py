@@ -35,6 +35,11 @@ class MatriculaPorAluno(generics.ListAPIView):
     aluno_id =self.kwargs["aluno_id"]
     return Matricula.objects.filter(aluno_id=aluno_id)
 
+class MatriculaRetriveUpdateDelete(generics.RetrieveUpdateDestroyAPIView):
+  queryset = Matricula.objects.all()
+  serializer_class = MatriculaSerializer
+  lookup_field = "pk"
+
 class Relatorio(APIView):
   def get(self, request):
     alunos = Aluno.objects.all()
