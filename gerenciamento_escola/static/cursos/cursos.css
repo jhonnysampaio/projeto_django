@@ -1,0 +1,88 @@
+*{
+    margin:0; padding:0;
+    box-sizing:border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#8aa1ac;
+    color:#fff;
+    padding:40px;
+}
+
+.topo h1{
+    font-size:28px;
+    font-weight:bold;
+    margin-bottom:30px;
+}
+
+.container{
+    background:#fff;
+    color:#000;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* tabela */
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:10px;
+}
+
+th, td{
+    padding:12px;
+    border-bottom:1px solid #ddd;
+}
+
+th{
+    background:#0A66FF;
+    color:#fff;
+    text-align:left;
+}
+
+tr:hover{
+    background:#f1f1f1;
+}
+
+.acoes{
+    display:flex;
+    gap:10px;
+}
+
+/* botões */
+.btn{
+    padding:8px 12px;
+    border-radius:6px;
+    text-decoration:none;
+    font-weight:bold;
+    transition:.3s;
+    display:inline-block;
+}
+
+/* ações tabela */
+.editar{ background:#0A66FF; color:#fff; }
+.excluir{ background:#d62828; color:#fff; }
+
+/* navbar inferior */
+.botoes{
+    margin-top:20px;
+    display:flex;
+    gap:10px;
+}
+
+.novo{ background:#02a65c; color:#fff; }
+.voltar{ background:#0A66FF; color:#fff; }
+
+/* hover */
+.btn:hover{
+    opacity:0.8;
+}
+
+.empty{
+    text-align:center;
+    font-size:18px;
+    font-weight:bold;
+    margin:20px 0;
+}

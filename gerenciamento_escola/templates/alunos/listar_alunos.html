@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Alunos</title>
+    <link rel="stylesheet" href="{% static 'alunos/alunos.css' %}">
+</head>
+<body>
+
+<header class="topo">
+    <h1>Lista de Alunos</h1>
+
+</header>
+
+<section class="container">
+
+{% if alunos %}
+<table>
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>CPF</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for aluno in alunos %}
+        <tr>
+            <td>{{ aluno.nome }}</td>
+            <td>{{ aluno.email }}</td>
+            <td>{{ aluno.cpf }}</td>
+            <td class="acoes">
+                <a href="{% url 'gerenciamento_escola:editar_aluno' aluno.id %}" class="btn editar">Editar</a>
+                <a href="{% url 'gerenciamento_escola:excluir_aluno' aluno.id %}" class="btn excluir">Excluir</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% else %}
+<p class="empty">Nenhum aluno cadastrado.</p>
+{% endif %}
+
+<div class="botoes">
+    <a href="/alunos/cadastrar/" class="btn novo">Novo Aluno</a>
+    <a href="{% url 'gerenciamento_escola:dashboard' %}" class="btn voltar">Dashboard</a>
+    <a href="/" class="btn voltar">Home</a>
+</div>
+
+</section>
+
+</body>
+</html>

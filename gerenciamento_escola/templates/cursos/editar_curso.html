@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Aluno</title>
+
+    <link rel="stylesheet" href="{% static 'cursos/editar_curso.css' %}">
+</head>
+<body>
+
+<header class="topo">
+    <h1>Editar curso: <span>{{ curso.nome }}</span></h1>
+</header>
+
+<div class="container">
+
+    <form method="post" class="form-box">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <div class="buttons">
+            <button type="submit" class="btn salvar">Atualizar</button>
+
+            <a href="/cursos/" class="btn voltar">
+                Voltar
+            </a>
+        </div>
+    </form>
+
+</div>
+
+</body>
+</html>

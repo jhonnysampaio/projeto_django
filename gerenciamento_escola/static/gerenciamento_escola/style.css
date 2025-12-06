@@ -1,0 +1,79 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #8aa1ac; /* Só para simular o fundo do exemplo */
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    background: transparent;
+    color: white;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    align-items: center; /* garante alinhamento vertical */
+}
+
+.menu li {
+    display: flex; /* evita separação entre fundo e texto */
+    align-items: center;
+}
+
+.menu li a {
+    display: inline-block;
+    padding: 10px 22px;
+    border-radius: 30px;
+    text-decoration: none;
+    color: #fff;
+    transition: 0.3s;
+}
+
+/* item ativo (Home) */
+.menu li a.active {
+    background-color: #0A66FF;
+    font-weight: bold;
+}
+
+
+/* Dropdown */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    background-color: #fff;
+    list-style: none;
+    padding: 10px 0;
+    width: 140px;
+    border-radius: 6px;
+    display: none;
+}
+
+.dropdown-menu li a {
+   color: #000;
+   display: block;
+   padding: 10px 15px;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu li a:hover {
+    background: #f0f0f0;
+}

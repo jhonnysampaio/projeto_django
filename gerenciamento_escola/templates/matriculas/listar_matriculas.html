@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Matrículas</title>
+    <link rel="stylesheet" href="{% static 'matriculas/matriculas.css' %}">
+</head>
+<body>
+
+<header class="topo">
+    <h1>Lista de Matrículas</h1>
+
+</header>
+
+<section class="container">
+
+{% if matriculas %}
+<table>
+    <thead>
+        <tr>
+            <th>Aluno</th>
+            <th>Curso</th>
+            <th>Data da Matrícula</th>
+            <th>Status do Pagamento</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for matricula in matriculas %}
+        <tr>
+            <td>{{ matricula.aluno }}</td>
+            <td>{{ matricula.curso }}</td>
+            <td>{{ matricula.data_matricula }}</td>
+            <td>{{ matricula.status_pagamento }}</td>
+            <td class="acoes">
+                <a href="{% url 'gerenciamento_escola:editar_matricula' matricula.id %}" class="btn editar">Editar</a>
+                <a href="{% url 'gerenciamento_escola:excluir_matricula' matricula.id %}" class="btn excluir">Excluir</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% else %}
+<p class="empty">Nenhuma matricula encontrada.</p>
+{% endif %}
+
+<div class="botoes">
+    <a href="/matriculas/cadastrar/" class="btn novo">Nova Matrícula</a>
+    <a href="{% url 'gerenciamento_escola:dashboard' %}" class="btn voltar">Dashboard</a>
+    <a href="/" class="btn voltar">Home</a>
+</div>
+
+</section>
+
+</body>
+</html>

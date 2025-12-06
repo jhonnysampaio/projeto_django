@@ -1,24 +1,48 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Dashboard</title>
+
+  <link rel="stylesheet" href="{% static 'gerenciamento_escola/dashboard.css' %}">
 </head>
 <body>
-  <h1>dashboard</h1>
-  <p>Total de alunos: </p>
-  <td>{{ tot_alunos }}</td>
 
-  <p>Total de matrículas:</p>
-  <td>{{ tot_matriculas }}</td>
-  <tr></tr>
+<header class="topo">
+  <h1>Dashboard</h1>
+  
+</header>
 
-  <p>Matriculas Pagas:</p>
-  <td>{{ matriculas_pagas }}</td>
-  
-  <p>Matriculas Pendentes:</p>
-  <td>{{ matriculas_pendentes }}</td>
-  
+
+<section class="cards">
+
+  <div class="card">
+    <h2>Total de alunos</h2>
+    <span class="valor">{{ tot_alunos }}</span>
+  </div>
+
+  <div class="card">
+    <h2>Total de matrículas</h2>
+    <span class="valor">{{ tot_matriculas }}</span>
+  </div>
+
+  <div class="card">
+    <h2>Matrículas Pagas</h2>
+    <span class="valor verde">{{ matriculas_pagas }}</span>
+  </div>
+
+  <div class="card">
+    <h2>Matrículas Pendentes</h2>
+    <span class="valor vermelho">{{ matriculas_pendentes }}</span>
+  </div>
+
+</section>
+
+<div class="botoes">
+    <a href="/" class="btn voltar">Home</a>
+  </div>
+
 </body>
 </html>

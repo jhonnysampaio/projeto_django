@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Aluno</title>
+
+    <link rel="stylesheet" href="{% static 'alunos/cadastrar_aluno.css' %}">
+</head>
+<body>
+
+<header class="topo">
+    <h1>Cadastrar Aluno</h1>
+</header>
+
+<div class="container">
+
+    <form method="post" class="form-box">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <div class="buttons">
+            <button type="submit" class="btn salvar">Cadastrar</button>
+            <a href="/alunos/" class="btn voltar">Voltar</a>
+        </div>
+    </form>
+
+</div>
+
+</body>
+</html>

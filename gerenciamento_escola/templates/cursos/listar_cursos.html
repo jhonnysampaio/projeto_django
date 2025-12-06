@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Cursos</title>
+    <link rel="stylesheet" href="{% static 'cursos/cursos.css' %}">
+</head>
+<body>
+
+<header class="topo">
+    <h1>Lista de Curso</h1>
+
+</header>
+
+<section class="container">
+
+{% if cursos %}
+<table>
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Carga Horária</th>
+            <th>Valor da Inscrição</th>
+            <th>Status</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for curso in cursos %}
+        <tr>
+            <td>{{ curso.nome }}</td>
+            <td>{{ curso.carga_horaria }} Horas</td>
+            <td>R${{ curso.valor_inscricao }}</td>
+            <td>
+                {% if curso.status %}
+                    Ativo
+                {% else %}
+                    Inativo
+                {% endif %}
+            </td>
+            <td class="acoes">
+                <a href="{% url 'gerenciamento_escola:editar_curso' curso.id %}" class="btn editar">Editar</a>
+                <a href="{% url 'gerenciamento_escola:excluir_curso' curso.id %}" class="btn excluir">Excluir</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% else %}
+<p class="empty">Nenhum aluno cadastrado.</p>
+{% endif %}
+
+<div class="botoes">
+    <a href="/cursos/cadastrar/" class="btn novo">Novo Curso</a>
+    <a href="{% url 'gerenciamento_escola:dashboard' %}" class="btn voltar">Dashboard</a>
+    <a href="/" class="btn voltar">Home</a>
+</div>
+
+</section>
+
+</body>
+</html>

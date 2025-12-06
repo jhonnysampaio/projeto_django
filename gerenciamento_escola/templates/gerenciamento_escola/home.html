@@ -1,11 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'gerenciamento_escola/style.css' %}">
 </head>
 <body>
-    <h1>Bem vindos ao meu projeto!</h1>
+
+<header>
+    <nav class="navbar">
+        <div class="logo">Gerenciamento Escolar</div>
+
+        <ul class="menu">
+            <li><a href="#" class="active">Home</a></li>
+
+            <li class="dropdown">
+                <a href="#">Opções</a>
+                <ul class="dropdown-menu">
+                    <li><a href="/dashboard/">Dashboard</a></li>
+                    <li><a href="/alunos/">Alunos</a></li>
+                    <li><a href="/cursos/">Cursos</a></li>
+                    <li><a href="/matriculas/">Matrículas</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</header>
+
 </body>
 </html>

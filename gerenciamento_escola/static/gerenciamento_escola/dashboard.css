@@ -1,0 +1,78 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, sans-serif;
+}
+
+body{
+  background:#8aa1ac;          /* mesmo fundo usado no header */
+  color:#fff;
+  padding:40px;
+}
+
+/* Título */
+.topo h1{
+  font-size:28px;
+  font-weight:bold;
+  margin-bottom:30px;
+}
+
+/* Grid dos cards */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
+  gap:25px;
+}
+
+/* Card base */
+.card{
+  background:#fff;
+  color:#000;
+  padding:20px;
+  border-radius:15px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.15);
+  text-align:center;
+  transition:.3s;
+}
+
+.card:hover{
+  transform:translateY(-4px);
+}
+
+/* Valores */
+.valor{
+  display:block;
+  font-size:32px;
+  margin-top:10px;
+  font-weight:bold;
+  color:#0A66FF;      /* azul da paleta */
+}
+
+/* Destaques */
+.verde{ color:green !important; }
+.vermelho{ color:#d62828 !important; }
+
+/* Botão Home */
+.botoes {
+  margin-top: 30px;
+  text-align: center; /* centraliza o botão */
+}
+
+.botoes .btn {
+  background-color: #0A66FF; /* cor principal */
+  color: #ffffff; /* texto branco */
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  text-decoration: none; /* remove underline do link */
+  display: inline-block;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.botoes .btn:hover {
+  background-color: #0952cc; /* tom mais escuro no hover */
+  transform: scale(1.05);
+}

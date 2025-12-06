@@ -1,0 +1,63 @@
+{% load static %}
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <title>Histórico de {{ aluno.nome }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="stylesheet" href="{% static 'alunos/historico_aluno.css' %}">
+</head>
+
+<body>
+
+  <div class="container">
+
+      <header>
+          <h1>Histórico do Aluno</h1>
+          <h2>{{ aluno.nome }}</h2>
+          <p class="info">
+              E-mail: <span>{{ aluno.email }}</span> | 
+              CPF: <span>{{ aluno.cpf }}</span> | 
+              Ingresso: <span>{{ aluno.data_ingresso }}</span>
+          </p>
+      </header>
+
+      <table>
+          <thead>
+              <tr>
+                  <th>Curso</th>
+                  <th>Data Matrícula</th>
+                  <th>Valor Inscrição</th>
+                  <th>Status Pagamento</th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for m in matriculas %}
+              <tr>
+                  <td>{{ m.curso.nome }}</td>
+                  <td>{{ m.data_matricula }}</td>
+                  <td>R$ {{ m.curso.valor_inscricao }}</td>
+                  <td class="status {{ m.get_status_pagamento_display|lower }}">
+                    {{ m.get_status_pagamento_display }}
+                  </td>
+              </tr>
+              {% empty %}
+              <tr>
+                  <td colspan="4" class="empty">O aluno não possui matrículas.</td>
+              </tr>
+              {% endfor %}
+          </tbody>
+      </table>
+
+      <div class="summary-box">
+          <div><strong>Total devido:</strong> R$ {{ tot_devido }}</div>
+          <div><strong>Total pago:</strong> R$ {{ tot_pago }}</div>
+      </div>
+
+      <a class="voltar" href="{% url 'gerenciamento_escola:dashboard' %}">← Voltar ao Dashboard</a>
+
+  </div>
+
+</body>
+</html>
