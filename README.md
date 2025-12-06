@@ -32,7 +32,7 @@ git clone <https://github.com/jhonnysampaio/projeto_django.git>
 2. Rodar o projeto com Docker
 - docker-compose up --build
 
-- Depois que os containers subirem, acesse:
+- Depois que os container subir, acesse:
 http://localhost:8000
 
 3. Parar container:
